@@ -1,0 +1,168 @@
+{
+  "target": "Total (MT)",
+  "features": [
+    "Year",
+    "Month_num",
+    "month_sin",
+    "month_cos"
+  ],
+  "data_years": [
+    2000,
+    2023
+  ],
+  "split": {
+    "train": [
+      2000,
+      2017
+    ],
+    "validation": [
+      2018,
+      2020
+    ],
+    "test": [
+      2021,
+      2023
+    ]
+  },
+  "models": {
+    "random_forest": {
+      "name": "Random Forest",
+      "group": "Single"
+    },
+    "xgboost": {
+      "name": "XGBoost",
+      "group": "Single"
+    },
+    "voting": {
+      "name": "Voting (RF+XGB)",
+      "group": "Ensemble"
+    },
+    "stacking": {
+      "name": "Stacking (RF+XGB)",
+      "group": "Ensemble"
+    },
+    "hybrid_rf_arima": {
+      "name": "Hybrid RF + ARIMA",
+      "group": "Hybrid"
+    },
+    "hybrid_rf_ann": {
+      "name": "Hybrid RF + ANN",
+      "group": "Hybrid"
+    }
+  },
+  "best_params": {
+    "random_forest": {
+      "max_depth": 10,
+      "min_samples_leaf": 1,
+      "n_estimators": 300
+    },
+    "xgboost_trees": 440,
+    "arima_order": [
+      1,
+      1,
+      0
+    ],
+    "ann_layers": [
+      32,
+      16
+    ]
+  },
+  "cross_validation": [
+    {
+      "model": "random_forest",
+      "name": "Random Forest",
+      "group": "Single",
+      "RMSE_mean": 66.04026105370954,
+      "RMSE_std": 15.288388887411525,
+      "MAE_mean": 61.59388888888903,
+      "MAPE_mean": 0.6179399591671466,
+      "RMSE_per_fold": [
+        37.01969040629306,
+        63.9710120694147,
+        76.40552617206205,
+        76.34526292030421,
+        76.45981370047369
+      ]
+    },
+    {
+      "model": "xgboost",
+      "name": "XGBoost",
+      "group": "Single",
+      "RMSE_mean": 66.37116159221375,
+      "RMSE_std": 15.667530213969682,
+      "MAE_mean": 61.92947591145834,
+      "MAPE_mean": 0.621236567771166,
+      "RMSE_per_fold": [
+        37.3592200537276,
+        62.16027253618967,
+        77.35704981191701,
+        77.45334581553092,
+        77.52591974370354
+      ]
+    },
+    {
+      "model": "voting",
+      "name": "Voting (RF+XGB)",
+      "group": "Ensemble",
+      "RMSE_mean": 66.19601654857664,
+      "RMSE_std": 15.474401611607925,
+      "MAE_mean": 61.76168240017383,
+      "MAPE_mean": 0.6195882634691579,
+      "RMSE_per_fold": [
+        37.17009346144255,
+        63.05484684169211,
+        76.87450861291227,
+        76.89452078339123,
+        76.98611304344507
+      ]
+    },
+    {
+      "model": "stacking",
+      "name": "Stacking (RF+XGB)",
+      "group": "Ensemble",
+      "RMSE_mean": 71.24294642958827,
+      "RMSE_std": 31.5883239036817,
+      "MAE_mean": 66.43383297570139,
+      "MAPE_mean": 0.6670055523363188,
+      "RMSE_per_fold": [
+        33.00105455212023,
+        53.42953430463401,
+        109.79342436063203,
+        108.01323119665302,
+        51.97748773390201
+      ]
+    },
+    {
+      "model": "hybrid_rf_arima",
+      "name": "Hybrid RF + ARIMA",
+      "group": "Hybrid",
+      "RMSE_mean": 62.65456946193932,
+      "RMSE_std": 51.672647303892894,
+      "MAE_mean": 55.57151315727101,
+      "MAPE_mean": 0.5632137752063482,
+      "RMSE_per_fold": [
+        164.68193286557747,
+        52.62295302267235,
+        35.14806060424305,
+        31.83424675271565,
+        28.98565406448809
+      ]
+    },
+    {
+      "model": "hybrid_rf_ann",
+      "name": "Hybrid RF + ANN",
+      "group": "Hybrid",
+      "RMSE_mean": 69.13188885436752,
+      "RMSE_std": 40.283243431225905,
+      "MAE_mean": 59.874745955950196,
+      "MAPE_mean": 0.606332111618358,
+      "RMSE_per_fold": [
+        137.43632028137043,
+        80.31317134207069,
+        71.06703434391243,
+        29.964040581528096,
+        26.87887772295598
+      ]
+    }
+  ]
+}
