@@ -164,6 +164,10 @@ http://localhost:8501
 - R² can be misleading when the test period has very little variation in actual production. Therefore, MAE, RMSE, and MAPE should also be considered.
 - The forecasts are experimental outputs for academic model comparison and should not be treated as reliable real-world production forecasts.
 
+## Interpretation
+
+In this project, Hybrid RF + ANN performed the best in the main test set, achieving the lowest RMSE of 39.1 MT. I think it performed well because ANN learns the main production pattern, while Random Forest helps to correct the remaining errors. However, I also used MAE and MAPE because R² alone is not enough to evaluate model performance, especially when actual production values have very little variation. In walk-forward validation, Hybrid RF + ARIMA achieved the lowest average RMSE. Therefore, the best model can depend on the evaluation period.
+
 ## 🎯 Project Objective
 
 The primary objective is to compare single, ensemble, and hybrid machine learning techniques and investigate how effectively they capture historical patterns in monthly rubber production.
